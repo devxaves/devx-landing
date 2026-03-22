@@ -7,6 +7,7 @@ export default function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null)
   const posRef = useRef({ x: 0, y: 0 })
   const ringPos = useRef({ x: 0, y: 0 })
+  const isMouseOver = useRef(true)
 
   useEffect(() => {
     // Disable on touch devices
@@ -16,6 +17,7 @@ export default function CustomCursor() {
     const ring = ringRef.current
     if (!dot || !ring) return
 
+    // Show cursor initially
     dot.style.opacity = '1'
     ring.style.opacity = '0.6'
 
@@ -23,6 +25,24 @@ export default function CustomCursor() {
       posRef.current = { x: e.clientX, y: e.clientY }
       dot.style.left = `${e.clientX}px`
       dot.style.top = `${e.clientY}px`
+      
+      // Make sure cursor is visible when moving
+      if (isMouseOver.current) {
+        dot.style.opacity = '1'
+        ring.style.opacity = '0.6'
+      }
+    }
+
+    const onMouseEnter = () => {
+      isMouseOver.current = true
+      dot.style.opacity = '1'
+      ring.style.opacity = '0.6'
+    }
+
+    const onMouseLeave = () => {
+      isMouseOver.current = false
+      dot.style.opacity = '0'
+      ring.style.opacity = '0'
     }
 
     let rafId: number
@@ -30,8 +50,8 @@ export default function CustomCursor() {
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
     const animate = () => {
-      ringPos.current.x = lerp(ringPos.current.x, posRef.current.x, 0.12)
-      ringPos.current.y = lerp(ringPos.current.y, posRef.current.y, 0.12)
+      ringPos.current.x = lerp(ringPos.current.x, posRef.current.x, 0.15)
+      ringPos.current.y = lerp(ringPos.current.y, posRef.current.y, 0.15)
       ring.style.left = `${ringPos.current.x}px`
       ring.style.top = `${ringPos.current.y}px`
       rafId = requestAnimationFrame(animate)
@@ -39,34 +59,39 @@ export default function CustomCursor() {
 
     const onMouseEnterLink = () => {
       if (dot) {
-        dot.style.width = '12px'
-        dot.style.height = '12px'
-        dot.style.background = 'var(--color-accent-gold)'
+        dot.style.width = '14px'
+        dot.style.height = '14px'
+        dot.style.background = 'var(--color-accent-blue)'
       }
       if (ring) {
-        ring.style.width = '48px'
-        ring.style.height = '48px'
-        ring.style.borderColor = 'var(--color-accent-gold)'
+        ring.style.width = '52px'
+        ring.style.height = '52px'
+        ring.style.borderColor = 'var(--color-accent-blue)'
+        ring.style.opacity = '0.8'
       }
     }
 
     const onMouseLeaveLink = () => {
-      if (dot) {
+      if (dot && isMouseOver.current) {
         dot.style.width = '8px'
         dot.style.height = '8px'
-        dot.style.background = 'var(--color-accent-sage)'
+        dot.style.background = 'var(--color-accent-blue)'
       }
-      if (ring) {
+      if (ring && isMouseOver.current) {
         ring.style.width = '32px'
         ring.style.height = '32px'
-        ring.style.borderColor = 'var(--color-accent-sage)'
+        ring.style.borderColor = 'var(--color-accent-blue)'
+        ring.style.opacity = '0.6'
       }
     }
 
     window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mouseenter', onMouseEnter)
+    window.addEventListener('mouseleave', onMouseLeave)
     rafId = requestAnimationFrame(animate)
 
-    const links = document.querySelectorAll('a, button, [role="button"]')
+    // Add event listeners to interactive elements
+    const links = document.querySelectorAll('a, button, [role="button"], input, textarea')
     links.forEach((el) => {
       el.addEventListener('mouseenter', onMouseEnterLink)
       el.addEventListener('mouseleave', onMouseLeaveLink)
@@ -74,7 +99,13 @@ export default function CustomCursor() {
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('mouseenter', onMouseEnter)
+      window.removeEventListener('mouseleave', onMouseLeave)
       cancelAnimationFrame(rafId)
+      links.forEach((el) => {
+        el.removeEventListener('mouseenter', onMouseEnterLink)
+        el.removeEventListener('mouseleave', onMouseLeaveLink)
+      })
     }
   }, [])
 
@@ -83,12 +114,20 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         className="cursor-dot"
-        style={{ opacity: 0, transition: 'width 0.2s ease, height 0.2s ease, background 0.2s ease, left 0.05s linear, top 0.05s linear' }}
+        style={{
+          opacity: 1,
+          pointerEvents: 'none',
+          transition: 'width 0.2s ease, height 0.2s ease, background 0.2s ease',
+        }}
       />
       <div
         ref={ringRef}
         className="cursor-ring"
-        style={{ opacity: 0, transition: 'width 0.25s ease, height 0.25s ease, border-color 0.2s ease' }}
+        style={{
+          opacity: 0.6,
+          pointerEvents: 'none',
+          transition: 'width 0.25s ease, height 0.25s ease, border-color 0.2s ease, opacity 0.2s ease',
+        }}
       />
     </>
   )

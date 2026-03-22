@@ -39,9 +39,9 @@ export default function About() {
                   key={v}
                   className="font-sans text-[12px] font-normal tracking-wider px-5 py-2.5 rounded-full"
                   style={{
-                    backgroundColor: 'rgba(143,168,136,0.12)',
-                    color: 'var(--color-accent-sage)',
-                    border: '1px solid rgba(143,168,136,0.25)',
+                    backgroundColor: 'rgba(59,110,255,0.12)',
+                    color: 'var(--color-accent-blue)',
+                    border: '1px solid rgba(59,110,255,0.25)',
                   }}
                 >
                   {v}
@@ -64,7 +64,7 @@ export default function About() {
               style={{ boxShadow: '0 24px 64px rgba(0,0,0,0.08)' }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80"
+                src="/pic1.png"
                 alt="Forest canopy from below"
                 fill
                 className="object-cover"
@@ -78,7 +78,7 @@ export default function About() {
               style={{ boxShadow: '0 24px 64px rgba(0,0,0,0.1)', border: '4px solid var(--color-cream)' }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80"
+                src="/pic2.png"
                 alt="Team member portrait"
                 fill
                 className="object-cover"
@@ -94,10 +94,10 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="absolute bottom-10 right-0 glass rounded-xl px-5 py-4 text-center"
             >
-              <div className="font-display text-[32px] font-semibold text-charcoal leading-none">2016</div>
-              <div className="eyebrow mt-1.5" style={{ color: 'var(--color-accent-gold)' }}>Est.</div>
+              <div className="font-display text-[32px] font-semibold text-charcoal leading-none">2022</div>
+              <div className="eyebrow mt-1.5" style={{ color: 'var(--color-accent-blue)' }}>Est.</div>
               <div className="w-full h-px my-3" style={{ background: 'var(--color-sand)' }} />
-              <div className="font-sans text-[11px] font-light text-muted">12-person team</div>
+              <div className="font-sans text-[11px] font-light text-muted">5-person team</div>
             </motion.div>
           </motion.div>
         </div>

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Twitter, Linkedin, Github, Dribbble } from 'lucide-react'
 
 const serviceLinks = [
@@ -36,11 +37,13 @@ export default function Footer() {
           {/* Column 1: Logo + Tagline */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-7 h-7">
-                <svg viewBox="0 0 32 32" fill="none" className="w-full h-full">
-                  <polygon points="16,2 30,26 2,26" stroke="var(--color-accent-sage)" strokeWidth="1.5" fill="none" />
-                  <circle cx="16" cy="16" r="3" fill="var(--color-accent-sage)" />
-                </svg>
+              <div className="w-7 h-7 relative">
+                <Image
+                  src="/logo.png"
+                  alt="DEVX Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="text-[20px] tracking-[0.15em] font-display font-semibold text-charcoal">DEVX</span>
             </div>
@@ -48,8 +51,8 @@ export default function Footer() {
               Crafting the web, one pixel at a time.
             </p>
             <p className="font-sans text-[12px] text-stone leading-relaxed">
-              hello@teamdevx.com<br />
-              +1 (555) 000-0000
+              devxaves@gmail.com<br />
+              Kolkata, India
             </p>
           </div>
 
@@ -107,7 +110,7 @@ export default function Footer() {
           <p className="font-sans text-[12px] text-stone font-light">
             © {new Date().getFullYear()} Team DEVX. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          {/* <div className="flex items-center gap-4">
             {socialLinks.map(({ icon: Icon, label, href }) => (
               <motion.a
                 key={label}
@@ -120,7 +123,7 @@ export default function Footer() {
                 <Icon size={16} />
               </motion.a>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

@@ -9,21 +9,21 @@ const testimonials = [
     name: 'Sarah Chen',
     role: 'CEO, Luminis Capital',
     initials: 'SC',
-    gradient: 'linear-gradient(135deg, #8FA888, #C4B8A8)',
+    gradient: 'linear-gradient(135deg, #3B6EFF, #6B9EFF)',
   },
   {
     quote: 'We\'ve worked with several agencies, and DEVX operates on another level entirely. Their process is thoughtful, their craft is impeccable, and the results speak for themselves. True partners.',
     name: 'Marcus Webb',
     role: 'Founder, Meridian Studio',
     initials: 'MW',
-    gradient: 'linear-gradient(135deg, #C9A96E, #E8E0D5)',
+    gradient: 'linear-gradient(135deg, #00D9FF, #3B6EFF)',
   },
   {
     quote: 'Our conversion rate increased by 47% after the redesign. But beyond the numbers, we finally have a digital presence that matches the premium quality of our physical products.',
     name: 'Isabella Rossi',
     role: 'Head of Brand, Aether Botanics',
     initials: 'IR',
-    gradient: 'linear-gradient(135deg, #6B6560, #C4B8A8)',
+    gradient: 'linear-gradient(135deg, #2250D4, #00D9FF)',
   },
 ]
 
@@ -63,7 +63,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
       {/* Large quote mark */}
       <div
         className="font-display font-light leading-none mb-4 select-none"
-        style={{ fontSize: '80px', lineHeight: 0.8, color: 'var(--color-accent-sage)', opacity: 0.4 }}
+        style={{ fontSize: '80px', lineHeight: 0.8, color: 'var(--color-accent-blue)', opacity: 0.4 }}
       >
         &ldquo;
       </div>

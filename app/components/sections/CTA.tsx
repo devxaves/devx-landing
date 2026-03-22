@@ -10,7 +10,7 @@ export default function CTA() {
       {/* Aerial forest background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=60"
+          src="/bg1.png"
           alt=""
           fill
           className="object-cover"
@@ -22,7 +22,7 @@ export default function CTA() {
       {/* Gradient overlay */}
       <div
         className="absolute inset-0 z-0"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(143,168,136,0.12) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse at center, rgba(59,110,255,0.12) 0%, transparent 70%)' }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 flex justify-center">
@@ -38,9 +38,9 @@ export default function CTA() {
           <motion.div
             animate={{
               boxShadow: [
-                '0 0 60px rgba(143,168,136,0.15)',
-                '0 0 100px rgba(143,168,136,0.25)',
-                '0 0 60px rgba(143,168,136,0.15)',
+                '0 0 60px rgba(59,110,255,0.15)',
+                '0 0 100px rgba(59,110,255,0.25)',
+                '0 0 60px rgba(59,110,255,0.15)',
               ],
             }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -67,23 +67,23 @@ export default function CTA() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.a
                 href="#"
-                whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(143,168,136,0.35)' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(59,110,255,0.4)' }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-2 font-sans text-[13px] tracking-[0.08em] uppercase px-8 py-4 rounded-full text-white"
-                style={{ background: 'linear-gradient(135deg, var(--color-accent-sage) 0%, var(--color-accent-gold) 100%)' }}
+                style={{ background: 'linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-light) 100%)' }}
               >
                 Start a Project
                 <ArrowRight size={14} />
               </motion.a>
 
               <motion.a
-                href="mailto:hello@teamdevx.com"
-                whileHover={{ backgroundColor: 'rgba(44,44,44,0.06)' }}
+                href="mailto:devxaves@gmail.com"
+                whileHover={{ backgroundColor: 'rgba(59,110,255,0.08)' }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-2 font-sans text-[13px] tracking-[0.08em] uppercase px-8 py-4 rounded-full border border-charcoal/20 text-charcoal transition-all duration-300"
               >
                 <Mail size={14} />
-                hello@teamdevx.com
+                devxaves@gmail.com
               </motion.a>
             </div>
           </div>

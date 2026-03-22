@@ -83,10 +83,10 @@ export default function Services() {
                 style={{ backgroundColor: 'rgba(255,255,255,0.55)' }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-accent-sage/20"
-                  style={{ backgroundColor: 'rgba(143,168,136,0.12)' }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-accent-blue/20"
+                  style={{ backgroundColor: 'rgba(59,110,255,0.12)' }}
                 >
-                  <Icon size={18} style={{ color: 'var(--color-accent-sage)' }} />
+                  <Icon size={18} style={{ color: 'var(--color-accent-blue)' }} />
                 </div>
                 <h3
                   className="font-display text-[22px] font-semibold mb-3 leading-tight"

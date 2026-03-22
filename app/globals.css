@@ -8,16 +8,18 @@
    CSS Custom Properties
 ───────────────────────────────────────── */
 :root {
-  --color-cream: #FAF8F5;
-  --color-warm-white: #F5F2EE;
-  --color-sand: #E8E0D5;
-  --color-stone: #C4B8A8;
-  --color-charcoal: #2C2C2C;
-  --color-muted: #6B6560;
-  --color-accent-sage: #8FA888;
-  --color-accent-gold: #C9A96E;
-  --color-glass: rgba(255, 255, 255, 0.45);
-  --color-glass-border: rgba(255, 255, 255, 0.6);
+  --color-cream: #F0F5FB;
+  --color-warm-white: #FFFFFF;
+  --color-sand: #E8ECFA;
+  --color-stone: #B0B8CF;
+  --color-charcoal: #1A2854;
+  --color-muted: #677086;
+  --color-accent-blue: #3B6EFF;
+  --color-accent-blue-light: #6B9EFF;
+  --color-accent-blue-dark: #2250D4;
+  --color-accent-teal: #00D9FF;
+  --color-glass: rgba(255, 255, 255, 0.55);
+  --color-glass-border: rgba(59, 110, 255, 0.15);
 
   --font-display: var(--font-cormorant), Georgia, serif;
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
@@ -93,7 +95,7 @@ body::before {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--color-accent-sage);
+  background-color: var(--color-accent-blue);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -107,7 +109,7 @@ body::before {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1.5px solid var(--color-accent-sage);
+  border: 1.5px solid var(--color-accent-blue);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -148,7 +150,7 @@ body::before {
   inset: 0;
   background: radial-gradient(
     400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(143, 168, 136, 0.12) 0%,
+    rgba(59, 110, 255, 0.15) 0%,
     transparent 60%
   );
   opacity: 0;
@@ -174,13 +176,13 @@ body::before {
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent-sage);
+  color: var(--color-accent-blue);
 }
 
 .hero-headline {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(52px, 7vw, 96px);
+  font-size: clamp(42px, 5.5vw, 72px);
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--color-charcoal);
@@ -252,7 +254,7 @@ body::before {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-accent-sage), var(--color-accent-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-accent-blue), var(--color-accent-teal), transparent);
 }
 
 /* ─────────────────────────────────────────
@@ -269,7 +271,7 @@ body::before {
   bottom: -2px;
   width: 0;
   height: 1px;
-  background: var(--color-accent-sage);
+  background: var(--color-accent-blue);
   transition: width 0.3s ease;
 }
 

@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   description:
     'Team DEVX crafts high-performance websites and web applications that merge aesthetic precision with engineering excellence — for brands that demand the extraordinary.',
   keywords: ['web development', 'agency', 'Next.js', 'React', 'UI/UX design', 'web applications'],
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     title: 'Team DEVX — Premium Web Development Agency',
     description: 'Crafting digital experiences that endure. Premium web development for brands that demand the extraordinary.',

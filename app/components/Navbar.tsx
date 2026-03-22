@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Menu } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const navLinks = [
   { label: 'Work', href: '#work' },
@@ -40,32 +41,28 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? 'rgba(250,248,245,0.75)' : 'transparent',
+          background: scrolled ? 'rgba(240,245,251,0.75)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.6)' : '1px solid transparent',
-          boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,0.04)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(59,110,255,0.1)' : '1px solid transparent',
+          boxShadow: scrolled ? '0 4px 24px rgba(59,110,255,0.08)' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 relative">
-              <svg viewBox="0 0 32 32" fill="none" className="w-full h-full">
-                <polygon
-                  points="16,2 30,26 2,26"
-                  stroke="var(--color-accent-sage)"
-                  strokeWidth="1.5"
-                  fill="none"
-                  className="group-hover:stroke-[var(--color-accent-gold)] transition-colors duration-300"
-                />
-                <circle cx="16" cy="16" r="3" fill="var(--color-accent-sage)" className="group-hover:fill-[var(--color-accent-gold)] transition-colors duration-300" />
-              </svg>
+              <Image
+                src="/logo.png"
+                alt="DEVX Logo"
+                fill
+                className="object-contain"
+              />
             </div>
             <span
               className="text-[22px] tracking-[0.15em] font-display font-semibold text-charcoal group-hover:text-accent-sage transition-colors duration-300"
             >
-              DEVX
+              Team DEVX
             </span>
           </Link>
 
@@ -95,7 +92,7 @@ export default function Navbar() {
               initial={{ y: -8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.4 }}
-              className="font-sans text-[12px] tracking-[0.12em] font-normal uppercase px-6 py-2.5 rounded-full border border-charcoal/30 text-charcoal hover:bg-accent-sage hover:border-accent-sage hover:text-white transition-all duration-300"
+              className="font-sans text-[12px] tracking-[0.12em] font-normal uppercase px-6 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:bg-accent-blue hover:border-accent-blue hover:text-white transition-all duration-300"
             >
               Let&apos;s Talk
             </motion.a>

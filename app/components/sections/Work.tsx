@@ -7,23 +7,23 @@ import { ArrowUpRight } from 'lucide-react'
 
 const projects = [
   {
-    title: 'Aether Studio',
-    category: 'Brand Experience',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80',
-    desc: 'A full brand overhaul and digital platform for an architecture studio — clean, minimal, and obsessively crafted.',
+    title: 'Bharatiya',
+    category: 'Traditional E-Commerce',
+    image: '/work1.png',
+    desc: 'A full brand overhaul and digital platform for an Indian platform — clean, minimal, and obsessively crafted.',
     tall: true,
   },
   {
-    title: 'Bloom Commerce',
-    category: 'E-Commerce',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
+    title: 'InterVue AI',
+    category: 'AI-Powered SaaS',
+    image: '/work2.png',
     desc: 'A luxury botanics e-commerce experience with custom Shopify storefront and bespoke checkout flow.',
     tall: false,
   },
   {
-    title: 'Meridian SaaS',
+    title: 'Vizly Dashboard',
     category: 'Web Application',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    image: '/work3.png',
     desc: 'A data-dense analytics dashboard designed for readability, speed, and daily professional use.',
     tall: false,
   },
@@ -50,10 +50,10 @@ export default function Work() {
           <a
             href="#"
             className="font-sans text-[13px] font-normal tracking-wider hover-underline flex items-center gap-2 self-end"
-            style={{ color: 'var(--color-accent-sage)' }}
+            style={{ color: 'var(--color-accent-blue)' }}
           >
-            See All Projects
-            <ArrowUpRight size={14} />
+            {/* See All Projects
+            <ArrowUpRight size={14} /> */}
           </a>
         </motion.div>
 
@@ -80,11 +80,11 @@ export default function Work() {
               style={{ background: 'linear-gradient(to top, rgba(44,44,44,0.75) 0%, transparent 60%)' }}
             >
               <div className="glass rounded-xl p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <p className="eyebrow mb-2 text-accent-sage">{projects[0].category}</p>
+                <p className="eyebrow mb-2 text-accent-blue">{projects[0].category}</p>
                 <h3 className="font-display text-[24px] font-semibold text-charcoal mb-2">{projects[0].title}</h3>
                 <p className="font-sans text-[13px] font-light text-muted leading-relaxed mb-4">{projects[0].desc}</p>
-                <span className="font-sans text-[12px] font-normal text-accent-sage flex items-center gap-1 hover-underline">
-                  View Case Study <ArrowUpRight size={12} />
+                <span className="font-sans text-[12px] font-normal text-accent-blue flex items-center gap-1 hover-underline">
+                  {/* View Case Study <ArrowUpRight size={12} /> */}
                 </span>
               </div>
             </div>
@@ -119,10 +119,10 @@ export default function Work() {
                   style={{ background: 'linear-gradient(to top, rgba(44,44,44,0.75) 0%, transparent 70%)' }}
                 >
                   <div className="glass rounded-xl p-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="eyebrow mb-1.5 text-accent-sage text-[9px]">{project.category}</p>
+                    <p className="eyebrow mb-1.5 text-accent-blue text-[9px]">{project.category}</p>
                     <h3 className="font-display text-[18px] font-semibold text-charcoal mb-1">{project.title}</h3>
-                    <span className="font-sans text-[11px] font-normal text-accent-sage flex items-center gap-1">
-                      View Case Study <ArrowUpRight size={10} />
+                    <span className="font-sans text-[11px] font-normal text-accent-blue flex items-center gap-1">
+                      {/* View Case Study <ArrowUpRight size={10} /> */}
                     </span>
                   </div>
                 </div>

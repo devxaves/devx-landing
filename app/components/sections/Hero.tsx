@@ -11,7 +11,7 @@ const words = ['We', 'Build', 'Digital', 'Experiences', 'That', 'Endure']
 const stats = [
   { value: '50+', label: 'Projects' },
   { value: '98%', label: 'Client Retention' },
-  { value: '8 Yrs', label: 'Experience' },
+  { value: '4+ Yrs', label: 'Experience' },
 ]
 
 export default function Hero() {
@@ -39,9 +39,9 @@ export default function Hero() {
       <ThreeBackground />
 
       {/* Nature photo background */}
-      <div className="absolute inset-0 z-0" style={{ mixBlendMode: 'multiply', opacity: 0.28 }}>
+      <div className="absolute inset-0 z-0" style={{ mixBlendMode: 'multiply', opacity: 0.25 }}>
         <Image
-          src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80"
+          src="/bg1.png"
           alt=""
           fill
           className="object-cover"
@@ -50,23 +50,23 @@ export default function Hero() {
         />
       </div>
 
-      {/* Gradient mesh blobs */}
+      {/* Gradient mesh blobs - Blue theme */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div
           className="gradient-blob"
-          style={{ width: 600, height: 600, background: 'radial-gradient(circle, rgba(143,168,136,0.35) 0%, transparent 70%)', top: '-10%', right: '5%' }}
+          style={{ width: 600, height: 600, background: 'radial-gradient(circle, rgba(59,110,255,0.25) 0%, transparent 70%)', top: '-10%', right: '5%' }}
           animate={{ scale: [1, 1.1, 1], x: [0, 20, 0], y: [0, -15, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="gradient-blob"
-          style={{ width: 400, height: 400, background: 'radial-gradient(circle, rgba(201,169,110,0.25) 0%, transparent 70%)', bottom: '0%', left: '20%' }}
+          style={{ width: 400, height: 400, background: 'radial-gradient(circle, rgba(0,217,255,0.2) 0%, transparent 70%)', bottom: '0%', left: '20%' }}
           animate={{ scale: [1, 1.15, 1], x: [0, -20, 0], y: [0, 20, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
         />
         <motion.div
           className="gradient-blob"
-          style={{ width: 300, height: 300, background: 'radial-gradient(circle, rgba(196,184,168,0.3) 0%, transparent 70%)', top: '30%', left: '5%' }}
+          style={{ width: 300, height: 300, background: 'radial-gradient(circle, rgba(107,158,255,0.2) 0%, transparent 70%)', top: '30%', left: '5%' }}
           animate={{ scale: [1, 1.08, 1] }}
           transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         />
@@ -87,8 +87,8 @@ export default function Hero() {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8"
             >
-              <span className="text-accent-sage">✦</span>
-              <span className="eyebrow" style={{ color: 'var(--color-accent-sage)' }}>Premium Web Development</span>
+              <span className="text-accent-blue">✦</span>
+              <span className="eyebrow" style={{ color: 'var(--color-accent-blue)' }}>Premium Web Development</span>
             </motion.div>
 
             {/* Headline — word by word animation */}
@@ -132,19 +132,19 @@ export default function Hero() {
             >
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(143,168,136,0.35)' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(59,110,255,0.4)' }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-2 font-sans text-[13px] tracking-[0.08em] uppercase font-normal px-8 py-4 rounded-full text-white transition-all duration-300"
-                style={{ background: 'linear-gradient(135deg, var(--color-accent-sage) 0%, var(--color-accent-gold) 100%)' }}
+                style={{ background: 'linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-light) 100%)' }}
               >
                 Start a Project
                 <ArrowRight size={14} />
               </motion.a>
               <motion.a
                 href="#work"
-                whileHover={{ backgroundColor: 'rgba(44,44,44,0.06)' }}
+                whileHover={{ backgroundColor: 'rgba(59,110,255,0.08)' }}
                 whileTap={{ scale: 0.98 }}
-                className="font-sans text-[13px] tracking-[0.08em] uppercase font-normal px-8 py-4 rounded-full border border-charcoal/25 text-charcoal transition-all duration-300"
+                className="font-sans text-[13px] tracking-[0.08em] uppercase font-normal px-8 py-4 rounded-full border border-charcoal/15 text-charcoal transition-all duration-300"
               >
                 View Our Work
               </motion.a>
@@ -176,12 +176,12 @@ export default function Hero() {
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-300/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-green-300/60" />
                 <div className="flex-1 mx-4 bg-white/50 rounded-full h-5 flex items-center px-3">
-                  <span className="text-[10px] text-muted font-sans">teamdevx.com</span>
+                  <span className="text-[10px] text-muted font-sans">teamdevx.xyz</span>
                 </div>
               </div>
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80"
+                  src="/bg3.png"
                   alt="Premium web design showcase"
                   fill
                   className="object-cover"
@@ -200,7 +200,7 @@ export default function Hero() {
                   transition={{ delay: 1 + i * 0.15 }}
                   className="glass rounded-xl px-4 py-2.5 flex items-center gap-3"
                 >
-                  <div className="w-1.5 h-6 rounded-full" style={{ background: 'var(--color-accent-sage)' }} />
+                  <div className="w-1.5 h-6 rounded-full" style={{ background: 'linear-gradient(180deg, var(--color-accent-blue) 0%, var(--color-accent-teal) 100%)' }} />
                   <div>
                     <div className="font-display font-semibold text-charcoal text-[18px] leading-none">{stat.value}</div>
                     <div className="font-sans text-[10px] text-muted mt-0.5">{stat.label}</div>
@@ -225,14 +225,14 @@ export default function Hero() {
             animate={{ scaleY: [0, 1, 0], y: [0, 16, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
             className="w-px h-10 origin-top"
-            style={{ background: 'linear-gradient(to bottom, var(--color-accent-sage), transparent)' }}
+            style={{ background: 'linear-gradient(to bottom, var(--color-accent-blue), transparent)' }}
           />
           <motion.div
             animate={{ y: [0, 6, 0], opacity: [1, 0.3, 1] }}
             transition={{ duration: 1.6, repeat: Infinity }}
             className="mt-1"
           >
-            <ChevronDown size={14} style={{ color: 'var(--color-accent-sage)' }} />
+            <ChevronDown size={14} style={{ color: 'var(--color-accent-blue)' }} />
           </motion.div>
         </div>
       </motion.div>

@@ -5,7 +5,7 @@ import { useCountUp } from '@/app/hooks/useCountUp'
 const stats = [
   { value: 50, suffix: '+', label: 'Projects Delivered' },
   { value: 98, suffix: '%', label: 'Client Satisfaction' },
-  { value: 8, suffix: '', label: 'Years of Excellence' },
+  { value: 4, suffix: '+', label: 'Years of Excellence' },
   { value: 15, suffix: '+', label: 'Industries Served' },
 ]
 

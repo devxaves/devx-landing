@@ -1,45 +1,67 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 
-const steps = [
+const phases = [
   {
-    number: '01',
-    title: 'Discovery',
-    desc: 'We immerse ourselves in your world — your goals, users, competitors, and constraints — to build a shared understanding before a single line of code is written.',
+    phase: '01',
+    title: 'Discovery & Strategy',
+    description: 'We immerse ourselves in your world — your goals, users, competitors, and constraints — to build a shared understanding before a single line of code is written.',
+    points: ['Research & Analysis', 'User Interviews', 'Competitive Audit', 'Strategy Definition'],
+    color: 'from-blue-500 to-blue-400',
   },
   {
-    number: '02',
-    title: 'Design',
-    desc: 'From wireframes to pixel-perfect visuals, we craft interfaces in Figma that feel inevitable — functional, beautiful, and true to your brand.',
+    phase: '02',
+    title: 'Design & Prototyping',
+    description: 'From wireframes to pixel-perfect visuals, we craft interfaces in Figma that feel inevitable — functional, beautiful, and true to your brand.',
+    points: ['Wireframing', 'Design System', 'Hi-Fi Mockups', 'Interactive Prototype'],
+    color: 'from-blue-600 to-blue-500',
   },
   {
-    number: '03',
-    title: 'Development',
-    desc: 'Clean, documented, scalable code. We build with modern stacks and test rigorously to ensure your product performs flawlessly across all devices.',
+    phase: '03',
+    title: 'Development & QA',
+    description: 'Clean, documented, scalable code. We build with modern stacks and test rigorously to ensure your product performs flawlessly across all devices.',
+    points: ['Frontend Development', 'Backend Integration', 'Testing & QA', 'Performance Optimization'],
+    color: 'from-cyan-500 to-blue-600',
   },
   {
-    number: '04',
+    phase: '04',
     title: 'Launch & Beyond',
-    desc: 'We don\'t just ship and disappear. From deployment to post-launch analysis, we\'re partners in your ongoing growth and success.',
+    description: 'We don\'t just ship and disappear. From deployment to post-launch analysis, we\'re partners in your ongoing growth and success.',
+    points: ['Deployment', 'Monitoring', 'Optimization', 'Ongoing Support'],
+    color: 'from-cyan-400 to-cyan-600',
   },
 ]
 
 export default function Process() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start center', 'end center'],
+  })
+
+  const [activePhase, setActivePhase] = useState(0)
+
+  // Map scroll progress to phase index
+  const phaseIndex = useTransform(scrollYProgress, [0, 1], [0, phases.length - 1])
 
   return (
-    <section id="process" className="relative py-28 lg:py-36 overflow-hidden" style={{ backgroundColor: 'var(--color-cream)' }}>
-      {/* Background landscape strip */}
+    <section
+      ref={containerRef}
+      id="process"
+      className="relative py-12 lg:py-24 overflow-hidden"
+      style={{ backgroundColor: 'var(--color-cream)' }}
+    >
+      {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=60"
+          src="/bg4.png"
           alt=""
           fill
-          className="object-cover opacity-[0.06]"
+          className="object-cover opacity-[0.10]"
           style={{ filter: 'blur(2px)' }}
           sizes="100vw"
         />
@@ -58,53 +80,164 @@ export default function Process() {
           <h2 className="section-headline">
             A Refined Process<br />For Refined Results
           </h2>
+          <p className="font-sans text-[15px] font-light text-muted max-w-2xl mx-auto mt-6">
+            From initial discovery to ongoing partnership, we follow a systematic approach that ensures clarity, collaboration, and exceptional outcomes at every stage.
+          </p>
         </motion.div>
 
-        {/* Steps Grid */}
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative">
-          {/* SVG connecting line (desktop) */}
-          <div className="absolute top-12 left-[12.5%] right-[12.5%] hidden lg:block" style={{ height: 1, zIndex: 0 }}>
-            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
-              <motion.line
-                x1="0" y1="0" x2="100%" y2="0"
-                stroke="var(--color-accent-sage)"
-                strokeWidth="1"
-                strokeDasharray="4 8"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={isInView ? { pathLength: 1, opacity: 0.5 } : {}}
-                transition={{ duration: 1.5, delay: 0.3, ease: 'easeInOut' }}
-              />
-            </svg>
+        {/* Timeline with scrolling cards */}
+        <div className="relative">
+          {/* Progress line */}
+          <div className="absolute left-0 lg:left-1/2 lg:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-accent-blue via-cyan-500 to-transparent lg:w-0.5" />
+
+          {/* Phases Container */}
+          <div className="space-y-12 lg:space-y-20">
+            {phases.map((item, index) => {
+              const isActive = Math.round(phaseIndex.get?.()) === index || activePhase === index
+              return (
+                <motion.div
+                  key={item.phase}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+                  onViewportEnter={() => setActivePhase(index)}
+                >
+                  {/* Left: Content */}
+                  <motion.div
+                    className={index % 2 === 1 ? 'lg:order-2' : ''}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.4 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
+                    {/* Phase label */}
+                    <div className="mb-4">
+                      <span
+                        className="inline-block font-display font-light text-6xl opacity-20"
+                        style={{ color: 'var(--color-accent-blue)' }}
+                      >
+                        {item.phase}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-display text-[32px] font-semibold text-charcoal mb-4 leading-tight">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="font-sans text-[15px] font-light leading-relaxed text-muted mb-8">
+                      {item.description}
+                    </p>
+
+                    {/* Key points */}
+                    <div className="space-y-3 mb-8">
+                      {item.points.map((point) => (
+                        <motion.div
+                          key={point}
+                          initial={{ opacity: 0, x: -15 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: false }}
+                          transition={{ duration: 0.4 }}
+                          className="flex items-center gap-3"
+                        >
+                          <CheckCircle size={18} style={{ color: 'var(--color-accent-blue)' }} className="flex-shrink-0" />
+                          <span className="font-sans text-[14px] text-charcoal">{point}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* CTA if last phase */}
+                    {index === phases.length - 1 && (
+                      <motion.a
+                        href="#contact"
+                        whileHover={{ scale: 1.02 }}
+                        className="inline-flex items-center gap-2 font-sans text-[13px] tracking-[0.08em] uppercase px-6 py-3 rounded-full text-white transition-all duration-300"
+                        style={{
+                          background: 'linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-light) 100%)',
+                        }}
+                      >
+                        Start Your Project
+                        <ArrowRight size={14} />
+                      </motion.a>
+                    )}
+                  </motion.div>
+
+                  {/* Right: Glassmorphism Card */}
+                  <motion.div
+                    className={index % 2 === 1 ? 'lg:order-1' : ''}
+                    initial={{ opacity: 0, x: 30, scale: 0.95 }}
+                    whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                    viewport={{ once: false, amount: 0.4 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <motion.div
+                      className="glass rounded-2xl p-8 lg:p-10 relative overflow-hidden h-full flex flex-col justify-between"
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.6)',
+                        border: '1px solid rgba(59, 110, 255, 0.2)',
+                      }}
+                      whileHover={{ scale: 1.02, boxShadow: '0 20px 60px rgba(59,110,255,0.15)' }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {/* Gradient accent */}
+                      <motion.div
+                        className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-0 blur-2xl"
+                        style={{
+                          background: `linear-gradient(135deg, rgba(59,110,255,0.3), rgba(0,217,255,0.2))`,
+                        }}
+                        animate={{
+                          opacity: isActive ? 0.6 : 0.2,
+                          scale: isActive ? 1.2 : 1,
+                        }}
+                        transition={{ duration: 0.6 }}
+                      />
+
+                      <div className="relative z-10">
+                        {/* Icon/Number */}
+                        <motion.div
+                          className="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                          style={{
+                            background: `linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-light) 100%)`,
+                          }}
+                          whileHover={{ rotate: 10 }}
+                        >
+                          <span className="font-display text-[28px] font-light text-white">{item.phase}</span>
+                        </motion.div>
+
+                        {/* Phase label */}
+                        <p className="eyebrow mb-3">{item.title}</p>
+
+                        {/* Mini description */}
+                        <p className="font-sans text-[14px] font-light leading-relaxed text-muted mb-6">
+                          {item.description.slice(0, 100)}...
+                        </p>
+
+                        {/* Progress indicator */}
+                        <div className="mt-8 pt-6 border-t border-blue-200/50">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="font-sans text-[11px] font-medium text-stone">Completion</span>
+                            <span className="font-sans text-[11px] font-medium text-accent-blue">{((index + 1) / phases.length * 100).toFixed(0)}%</span>
+                          </div>
+                          <div className="w-full h-1 bg-blue-200 rounded-full overflow-hidden">
+                            <motion.div
+                              className="h-full bg-gradient-to-r from-accent-blue to-cyan-500"
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${((index + 1) / phases.length * 100)}%` }}
+                              viewport={{ once: false }}
+                              transition={{ duration: 0.8, delay: 0.3 }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              )
+            })}
           </div>
-
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.number}
-              initial={{ y: 40, opacity: 0 }}
-              animate={isInView ? { y: 0, opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="relative flex flex-col"
-            >
-              {/* Decorative number */}
-              <div
-                className="font-display font-light leading-none mb-3 select-none"
-                style={{ fontSize: '80px', color: 'var(--color-accent-sage)', opacity: 0.15 }}
-              >
-                {step.number}
-              </div>
-
-              {/* Dot */}
-              <div
-                className="w-3 h-3 rounded-full mb-5 z-10 relative"
-                style={{ background: 'var(--color-accent-sage)', boxShadow: '0 0 0 4px rgba(143,168,136,0.2)' }}
-              />
-
-              <h3 className="font-display text-[22px] font-semibold text-charcoal mb-3">{step.title}</h3>
-              <p className="font-sans text-[14px] font-light leading-relaxed" style={{ color: 'var(--color-muted)' }}>
-                {step.desc}
-              </p>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>
