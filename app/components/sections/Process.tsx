@@ -9,29 +9,29 @@ const phases = [
   {
     phase: '01',
     title: 'Discovery & Strategy',
-    description: 'We immerse ourselves in your world — your goals, users, competitors, and constraints — to build a shared understanding before a single line of code is written.',
-    points: ['Research & Analysis', 'User Interviews', 'Competitive Audit', 'Strategy Definition'],
+    description: 'Research your goals, users, and market to build a solid foundation.',
+    points: ['Research & Analysis', 'Strategy Definition'],
     color: 'from-blue-500 to-blue-400',
   },
   {
     phase: '02',
     title: 'Design & Prototyping',
-    description: 'From wireframes to pixel-perfect visuals, we craft interfaces in Figma that feel inevitable — functional, beautiful, and true to your brand.',
-    points: ['Wireframing', 'Design System', 'Hi-Fi Mockups', 'Interactive Prototype'],
+    description: 'Craft beautiful, functional interfaces in Figma that match your vision.',
+    points: ['UI/UX Design', 'Interactive Prototype'],
     color: 'from-blue-600 to-blue-500',
   },
   {
     phase: '03',
     title: 'Development & QA',
-    description: 'Clean, documented, scalable code. We build with modern stacks and test rigorously to ensure your product performs flawlessly across all devices.',
-    points: ['Frontend Development', 'Backend Integration', 'Testing & QA', 'Performance Optimization'],
+    description: 'Build scalable code with rigorous testing across all devices.',
+    points: ['Full-Stack Development', 'Quality Assurance'],
     color: 'from-cyan-500 to-blue-600',
   },
   {
     phase: '04',
     title: 'Launch & Beyond',
-    description: 'We don\'t just ship and disappear. From deployment to post-launch analysis, we\'re partners in your ongoing growth and success.',
-    points: ['Deployment', 'Monitoring', 'Optimization', 'Ongoing Support'],
+    description: 'Deploy, monitor, and optimize for ongoing success and growth.',
+    points: ['Deployment & Monitoring', 'Continuous Support'],
     color: 'from-cyan-400 to-cyan-600',
   },
 ]
@@ -81,7 +81,7 @@ export default function Process() {
             A Refined Process<br />For Refined Results
           </h2>
           <p className="font-sans text-[15px] font-light text-muted max-w-2xl mx-auto mt-6">
-            From initial discovery to ongoing partnership, we follow a systematic approach that ensures clarity, collaboration, and exceptional outcomes at every stage.
+            Systematic, collaborative, and designed to deliver exceptional results at every stage.
           </p>
         </motion.div>
 

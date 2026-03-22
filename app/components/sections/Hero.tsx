@@ -77,7 +77,7 @@ export default function Hero() {
         style={{ y, opacity }}
         className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20 w-full"
       >
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column */}
           <div>
             {/* Eyebrow badge */}
@@ -156,7 +156,7 @@ export default function Hero() {
             initial={{ x: 40, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.5 }}
-            className="relative hidden lg:flex flex-col items-center"
+            className="relative flex flex-col items-center"
           >
             {/* Device mockup card */}
             <motion.div
@@ -169,6 +169,7 @@ export default function Hero() {
                 transform: 'perspective(1000px) rotateY(-8deg)',
                 boxShadow: '0 24px 64px rgba(0,0,0,0.1)',
                 transition: 'transform 0.5s ease',
+                minHeight: '320px',
               }}
             >
               <div className="bg-stone/20 rounded-t-2xl px-4 py-3 flex items-center gap-2">
@@ -191,19 +192,19 @@ export default function Hero() {
             </motion.div>
 
             {/* Floating stat chips */}
-            <div className="absolute -left-6 top-8 flex flex-col gap-3">
+            <div className="absolute -left-6 top-8 md:-left-8 md:top-12 flex flex-col gap-3">
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 1 + i * 0.15 }}
-                  className="glass rounded-xl px-4 py-2.5 flex items-center gap-3"
+                  className="glass rounded-xl px-3 md:px-4 py-2 md:py-2.5 flex items-center gap-2 md:gap-3"
                 >
-                  <div className="w-1.5 h-6 rounded-full" style={{ background: 'linear-gradient(180deg, var(--color-accent-blue) 0%, var(--color-accent-teal) 100%)' }} />
+                  <div className="w-1.5 h-4 md:h-6 rounded-full" style={{ background: 'linear-gradient(180deg, var(--color-accent-blue) 0%, var(--color-accent-teal) 100%)' }} />
                   <div>
-                    <div className="font-display font-semibold text-charcoal text-[18px] leading-none">{stat.value}</div>
-                    <div className="font-sans text-[10px] text-muted mt-0.5">{stat.label}</div>
+                    <div className="font-display font-semibold text-charcoal text-[14px] md:text-[18px] leading-none">{stat.value}</div>
+                    <div className="font-sans text-[8px] md:text-[10px] text-muted mt-0.5">{stat.label}</div>
                   </div>
                 </motion.div>
               ))}

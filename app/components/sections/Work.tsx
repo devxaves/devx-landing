@@ -58,15 +58,15 @@ export default function Work() {
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5">
           {/* Large card left */}
           <motion.div
             initial={{ y: 40, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 group relative rounded-2xl overflow-hidden cursor-pointer"
-            style={{ height: '520px' }}
+            className="md:col-span-2 lg:col-span-7 group relative rounded-2xl overflow-hidden cursor-pointer"
+            style={{ height: '380px', minHeight: '280px' }}
           >
             <Image
               src={projects[0].image}
@@ -96,7 +96,7 @@ export default function Work() {
           </motion.div>
 
           {/* Right stacked cards */}
-          <div className="lg:col-span-5 flex flex-col gap-5">
+          <div className="md:col-span-2 lg:col-span-5 flex flex-col gap-5">
             {projects.slice(1).map((project, i) => (
               <motion.div
                 key={project.title}
@@ -105,7 +105,7 @@ export default function Work() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: (i + 1) * 0.1 }}
                 className="group relative rounded-2xl overflow-hidden cursor-pointer flex-1"
-                style={{ height: '245px' }}
+                style={{ minHeight: '200px' }}
               >
                 <Image
                   src={project.image}

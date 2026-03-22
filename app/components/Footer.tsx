@@ -45,7 +45,7 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[20px] tracking-[0.15em] font-display font-semibold text-charcoal">DEVX</span>
+              <span className="text-[20px] tracking-[0.15em] font-display font-semibold text-charcoal">Team DEVX</span>
             </div>
             <p className="font-sans text-[13px] italic text-muted leading-relaxed font-light mt-2 mb-6 max-w-[200px]">
               Crafting the web, one pixel at a time.

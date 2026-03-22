@@ -100,7 +100,7 @@ export default function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden text-charcoal p-2"
+            className="md:hidden text-charcoal p-2 hover:text-accent-blue transition-colors"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
@@ -117,19 +117,30 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[100] bg-cream flex flex-col"
+            className="fixed inset-0 z-[100] flex flex-col"
+            style={{ backgroundColor: 'var(--color-cream)' }}
           >
-            <div className="flex items-center justify-between px-6 py-5 border-b border-sand">
-              <span className="text-[22px] tracking-[0.15em] font-display font-semibold text-charcoal">DEVX</span>
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-5" style={{ borderBottom: '1px solid rgba(59,110,255,0.1)' }}>
+              <div className="w-8 h-8 relative">
+                <Image
+                  src="/logo.png"
+                  alt="DEVX Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <button
                 onClick={() => setMobileOpen(false)}
-                className="text-charcoal p-2"
+                className="text-charcoal p-2 hover:text-accent-blue transition-colors"
                 aria-label="Close menu"
               >
                 <X size={22} />
               </button>
             </div>
-            <nav className="flex flex-col gap-2 px-8 pt-12 flex-1">
+
+            {/* Navigation Links */}
+            <nav className="flex flex-col gap-0 px-6 pt-8 flex-1 overflow-y-auto">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.label}
@@ -140,25 +151,35 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block font-display font-light text-5xl text-charcoal py-3 border-b border-sand/50 hover:text-accent-sage transition-colors"
+                    className="block font-display text-[36px] font-semibold text-charcoal py-4 border-b transition-colors hover:text-accent-blue"
+                    style={{ borderColor: 'rgba(59,110,255,0.1)' }}
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-              <motion.a
+            </nav>
+
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="px-6 pb-8 pt-6"
+            >
+              <a
                 href="#contact"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
                 onClick={() => setMobileOpen(false)}
-                className="mt-10 font-sans text-[12px] tracking-[0.12em] uppercase text-center py-4 rounded-full bg-accent-sage text-white"
+                className="block w-full text-center font-sans text-[12px] tracking-[0.12em] uppercase font-normal py-4 rounded-full text-white transition-all duration-300"
+                style={{ background: 'linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-light) 100%)' }}
               >
                 Let&apos;s Talk
-              </motion.a>
-            </nav>
-            <div className="px-8 pb-10">
-              <p className="font-sans text-xs text-stone tracking-wider">© 2024 Team DEVX</p>
+              </a>
+            </motion.div>
+
+            {/* Footer */}
+            <div className="px-6 pb-6 pt-4" style={{ borderTop: '1px solid rgba(59,110,255,0.1)' }}>
+              <p className="font-sans text-[11px] text-muted tracking-wider">© 2026 Team DEVX</p>
             </div>
           </motion.div>
         )}
