@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   CSS Custom Properties
+───────────────────────────────────────── */
+:root {
+  --color-cream: #FAF8F5;
+  --color-warm-white: #F5F2EE;
+  --color-sand: #E8E0D5;
+  --color-stone: #C4B8A8;
+  --color-charcoal: #2C2C2C;
+  --color-muted: #6B6560;
+  --color-accent-sage: #8FA888;
+  --color-accent-gold: #C9A96E;
+  --color-glass: rgba(255, 255, 255, 0.45);
+  --color-glass-border: rgba(255, 255, 255, 0.6);
+
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   Base Reset & Global Styles
+───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────
+   SVG Noise Texture Overlay (premium tactile feel)
+───────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.04;
+}
+
+/* ─────────────────────────────────────────
+   Custom Scrollbar
+───────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-sage);
+}
+
+/* ─────────────────────────────────────────
+   Custom Cursor
+───────────────────────────────────────── */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent-sage);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-accent-sage);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+/* ─────────────────────────────────────────
+   Glassmorphism Utility
+───────────────────────────────────────── */
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.glass-dark {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+/* ─────────────────────────────────────────
+   Liquid Glass Card (mouse-tracking spotlight)
+───────────────────────────────────────── */
+.liquid-glass {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(143, 168, 136, 0.12) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.liquid-glass:hover::after {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────
+   Typography Utilities
+───────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-sage);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-charcoal);
+}
+
+.section-headline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.1;
+  color: var(--color-charcoal);
+}
+
+/* ─────────────────────────────────────────
+   Marquee Animations
+───────────────────────────────────────── */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.marquee-track-left {
+  display: flex;
+  animation: marquee-left 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-right {
+  display: flex;
+  animation: marquee-right 35s linear infinite;
+  will-change: transform;
+}
+
+/* ─────────────────────────────────────────
+   Gradient Mesh Blobs
+───────────────────────────────────────── */
+.gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   Section Transitions
+───────────────────────────────────────── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ─────────────────────────────────────────
+   Gradient Border Utility
+───────────────────────────────────────── */
+.gradient-border-top {
+  position: relative;
+}
+
+.gradient-border-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-sage), var(--color-accent-gold), transparent);
+}
+
+/* ─────────────────────────────────────────
+   Underline Hover Animation
+───────────────────────────────────────── */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent-sage);
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────
+   Reduced Motion Support
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track-left,
+  .marquee-track-right {
+    animation: none;
+  }
+}
